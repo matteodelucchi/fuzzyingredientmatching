@@ -12,7 +12,7 @@ from urllib.parse import quote
 from itertools import chain
 
 import inquirer
-# import jsonel
+import json
 # -----------------------------------------------------------------------------
 # GOAL: add to each PKS product a BLS product
 # Design IDEA:
