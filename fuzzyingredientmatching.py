@@ -385,25 +385,17 @@ def find_synonyms(item):
 
 # -----------------------------------------------------------------------------
 # Read in Paulis Kitchen Solution data
-# PKS = ["russischer Salat", "Gewürzmischung für Fleisch", "Rüebli", "Basilikum Pesto", "Basilikum Senf", "Basilikum dunkelrot frisch", "Basilikum frisch", "Basilikum gemahlen", "Basilikum getrocknet", "Basilikum grossblättrig", "Basilikum grossblättrig", "Basilikum thailändisch", "Basilikum vietnamesisch", "Basilikum Zweig frisch", "Basilikum Zweig frisch", "Basilikumblätter frisch", "Baumnüsse, ganz", "Baumnussglace", "Baumnusskerne, halbiert", "Baumnussoel", "Baumnussöl", "Avocado - Fruchtfleisch", "Avocado (Stk ca.150 g)", "Avocado (Stk ca.300 g)", "Avocados, geschält"]
-# PKS = {"0": "Lachsfilet", "1": "Rüebli", "2": "Basilikum Pesto", "3": "Basilikum Senf", "4": "Baumnüsse, ganz", "5": "Baumnussglace", "6": "Avocado - Fruchtfleisch", "7": "Avocado (Stk ca.150 g)", "8":"russischer Salat", "9":"Gewürzmischung für Fleisch",}
 PKS = read_products("Produkte_Liste_PKS_Ansicht1.csv", 1, 3)
-# PKS = read_products("Produkte_Liste_PKS_Ansicht1_SHORT.csv", 1, 3)
 
 # -----------------------------------------------------------------------------
 # Read in BLS data
-# BLS = ["salat", "Gewürz", "Karotte", "Avocado", "Basilikum", "Baumnüsse"]
-# BLS = {"0": "Lachs (Salm)", "1": "Karotte", "2": "Avocado", "3": "Basilikum", "4": "Baumnüsse", "5": "salat", "6": "Gewürz"}
-# BLS  = read_products("tblBasisprodukt.csv", 2, 3)
 BLS  = read_products("Bundeslebensmittelschlüssel_(BLS)_(2014)_VERTRAULICH_NUR_INTERN.csv", 0, 1)
 
 # -----------------------------------------------------------------------------
 # Find a matching BLS product given the PKS list
-# fuzzymatch = []
 fuzzymatch = {}
 save_counter = 0
 
-# temp = []
 for pauliID in PKS:
     # extract the product name for each ID in the pauli products dictonary
     pauliproduct = PKS[pauliID]
@@ -431,7 +423,7 @@ for pauliID in PKS:
             # If no synonym is found, write NAs for BLS code and product.
             fuzzymatch[pauliID] = [pauliproduct, "NA", "NA", "NA"]
 
-    save_counter = save_intermediate("LUT_PKS_BLS_partial.csv", fuzzymatch, save_counter, STEP=5)
+    save_counter = save_intermediate("LUT_PKS_BLS.csv", fuzzymatch, save_counter, STEP=5)
 
 # -----------------------------------------------------------------------------
 # Write as csv output
