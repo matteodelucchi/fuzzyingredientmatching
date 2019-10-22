@@ -17,7 +17,7 @@ def load_dataframe(LUT, variables):
 
 #----------------------------------------
 ### Load the two individal matchings as pandas data frames
-hoga_bls = load_dataframe("LUT_hoga_BLS_SHORT.csv", ['idHogaProd', 'Hogaprodukt', 'BLS_Code', 'BLS_Bezeichnung'])
+hoga_bls = load_dataframe("LUT_hoga_BLS.csv", ['idHogaProd', 'Hogaprodukt', 'BLS_Code', 'BLS_Bezeichnung'])
 pks_bls = load_dataframe("LUT_PKS_BLS.csv", ['idPauliProd', 'Pauliprodukt', 'BLS_Code', 'BLS_Bezeichnung'])
 
 ### Merge the two matchings by their BLS_Code (serves as key)
